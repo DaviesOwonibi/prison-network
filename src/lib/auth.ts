@@ -32,6 +32,7 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: getGoogleCredentials().clientSecret,
 		}),
 	],
+	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
 		async jwt({ token, user }) {
 			const dbUser = (await db.get(`user:${token.id}`)) as User | null;
@@ -48,7 +49,7 @@ export const authOptions: NextAuthOptions = {
 				picture: dbUser.image,
 			};
 		},
-		async session({session, token}) {
+		async session({ session, token }) {
 			if (token) {
 				session.user.id = token.id;
 				session.user.name = token.name;
@@ -60,7 +61,7 @@ export const authOptions: NextAuthOptions = {
 		},
 
 		redirect() {
-			return '/dashboard'
-		}
+			return "/dashboard";
+		},
 	},
 };
