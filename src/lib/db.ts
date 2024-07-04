@@ -2,6 +2,7 @@ import { Redis } from "@upstash/redis";
 
 export const db = new Redis({
 	url: "https://welcomed-tortoise-34184.upstash.io",
+	token: "AYWIAAIncDE4YTZiZmIyN2IxMWU0MWVlODA0MWM3MjIzMTJmYTViMHAxMzQxODQ",
 	// url: process.env.UPSTASH_REDIS_REST_URL,
-	token: process.env.UPSTASH_REDIS_REST_TOKEN,
+	// token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
